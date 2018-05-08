@@ -5,11 +5,11 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Green Leaves</h1>
+      <div className="container">
+        <header className="header">
+          <h1 className="title">Green Leaves</h1>
         </header>
-        <div className="App-container">
+        <div className="container">
           <Contacto />
         </div>
       </div>

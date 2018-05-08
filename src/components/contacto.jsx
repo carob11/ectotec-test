@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InputText from './inputText';
 import InputCalendar from './inputCalendar';
+import InputSearch from './inputSearch';
 
 export default class Contacto extends Component {
   onSubmit(e) {
@@ -14,9 +15,9 @@ export default class Contacto extends Component {
           <InputText label='Nombre' name='nombre' />
           <InputText label='Email' name='email' />
           <InputText label='Teléfono' name='telefono' />
-          <InputCalendar locale='es' format='DD/MM/YYYY' date='4-12-2014' />
-          <InputText label='Ciudad y Estado' name='ciudad' />
-          <button>Enviar</button>
+          <InputCalendar />
+          <InputSearch />
+          <button className='btn btn-primary'>Enviar</button>
         </form>
       </div>
     )
