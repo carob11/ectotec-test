@@ -4,11 +4,15 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 export default class InputSearch extends Component {
   constructor(props) {
     super(props);
-    this.state = { address: '' }
+    this.state = { address: '', shouldFetchSuggestions: false }
   }
 
   handleChange = (address) => {
-    this.setState({ address })
+    let shouldFetchSuggestions = false
+    if (address.length >= 2) {
+      shouldFetchSuggestions = true
+    }
+    this.setState({ address, shouldFetchSuggestions })
   }
 
   handleSelect = (address) => {
@@ -24,6 +28,7 @@ export default class InputSearch extends Component {
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        shouldFetchSuggestions={this.state.shouldFetchSuggestions}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps }) => (
           <div>
@@ -40,8 +45,8 @@ export default class InputSearch extends Component {
               {suggestions.map(suggestion => {
                 const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
                 const style = suggestion.active
-                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                            : { backgroundColor: '#ffffff', cursor: 'pointer' }
+                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  : { backgroundColor: '#ffffff', cursor: 'pointer' }
                 return (
                   <div {...getSuggestionItemProps(suggestion, { className, style })}>
                     <span>{suggestion.description}</span>
